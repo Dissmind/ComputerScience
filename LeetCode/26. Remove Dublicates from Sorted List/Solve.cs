@@ -1,4 +1,4 @@
-﻿namespace Leetcode._26._Remove_Dublicates_from_Sorted_List;
+﻿namespace Leetcode.N26RemoveDublicatesFromSortedList;
 
 public class Solve
 {
