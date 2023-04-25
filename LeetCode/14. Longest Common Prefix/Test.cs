@@ -10,5 +10,6 @@ public class Test
         var obj = new Solve();
         Assert.AreEqual("fl", obj.LongestCommonPrefix(new string[] {"flower", "flow", "flight"}), "Example 1");
         Assert.AreEqual("", obj.LongestCommonPrefix(new string[] {"dog", "rececar", "car"}), "Example 2");
+        Assert.AreEqual("a", obj.LongestCommonPrefix(new string[] {"a"}), "Example 3");
     }
 }

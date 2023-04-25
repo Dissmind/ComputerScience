@@ -10,7 +10,7 @@ public class Solve
         {
             for (int i = 0; i < strs[0].Length; i++)
             {
-                if (strs[0][i] == strs[1][i] && strs[0][i] == strs[2][i])
+                if (CheckArrayItemEquals(strs, i))
                 {
                     prefix += strs[0][i];
                 }
@@ -27,5 +27,21 @@ public class Solve
         
         
         return prefix;
+    }
+
+
+    private bool CheckArrayItemEquals(string[] strs, int index)
+    {
+        char firstValue = strs[0][index];
+        
+        for (int i = 1; i < strs.Length; i++)
+        {
+            if (firstValue != strs[i][index])
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
