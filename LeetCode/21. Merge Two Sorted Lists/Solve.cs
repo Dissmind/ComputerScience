@@ -1,4 +1,4 @@
-﻿namespace Leetcode._21._Merge_Two_Sorted_Lists;
+﻿namespace Leetcode.N21MergeTwoSortedLists;
 
 public class Solve
 {
@@ -9,6 +9,35 @@ public class Solve
         public ListNode(int val=0, ListNode next=null) {
             this.val = val;
             this.next = next;
+        }
+
+        public ListNode(List<int> list)
+        {
+            if (list.Count == 0)
+            {
+                return;
+            }
+            
+            ListNode head = null;
+            ListNode tail = null;
+            
+            foreach (int value in list)
+            {
+                ListNode node = new ListNode { val = value };
+                if (head == null)
+                {
+                    head = node;
+                    tail = node;
+                }
+                else
+                {
+                    tail.next = node;
+                    tail = node;
+                }
+            }
+            
+            val = head.val;
+            next = head.next;
         }
     }
 
