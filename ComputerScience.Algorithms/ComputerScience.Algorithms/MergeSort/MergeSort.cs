@@ -1,10 +1,8 @@
-﻿using System.Reflection;
-
-namespace ComputerScience.Algorithms.MergeSort;
+﻿namespace ComputerScience.Algorithms.MergeSort;
 
 public class MergeSort
 {
-    public static int[] Sort(int[] array)
+    public static IComparable[] Sort<T>(IComparable[] array)
     {
         if (array.Length <= 1)
         {
@@ -13,29 +11,28 @@ public class MergeSort
     
         int middlePosition = array.Length / 2;
         
-        int[] leftArray = array.Take(middlePosition).ToArray();
-        int[] rightArray = array.Skip(middlePosition).ToArray();
+        IComparable[] leftArray = array.Take(middlePosition).ToArray();
+        IComparable[] rightArray = array.Skip(middlePosition).ToArray();
         
-        int[] result = Merge(Sort(leftArray), Sort(rightArray));
+        IComparable[] result = Merge<T>(Sort<T>(leftArray), Sort<T>(rightArray));
     
         return result;
     }
     
     
-    
-    private static int[] Merge(int[] leftArray, int[] rightArray)
+    private static IComparable[] Merge<T>(IComparable[] leftArray, IComparable[] rightArray)
     {
         int leftPtrIndex = 0;
         int rightPtrIndex = 0;
     
         int mergedArrayLength = leftArray.Length + rightArray.Length;
-        int[] mergedArray = new int[mergedArrayLength];
+        IComparable[] mergedArray = new IComparable[mergedArrayLength];
     
         for (int i = 0; i < mergedArray.Length; i++)
         {
             if (leftPtrIndex < leftArray.Length && rightPtrIndex < rightArray.Length)
             {
-                if (leftArray[leftPtrIndex] > rightArray[rightPtrIndex])
+                if (leftArray[leftPtrIndex].CompareTo(rightArray[rightPtrIndex]) > 0)
                 {
                     mergedArray[i] = rightArray[rightPtrIndex];
                     rightPtrIndex++;
